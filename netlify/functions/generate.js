@@ -70,13 +70,10 @@ AllowedIPs = 0.0.0.0/0, ::/0
 Endpoint = ${randomIP}:500
 PersistentKeepalive = 20`;
 
-    // 🔥 မူရင်း WireGuard အက်ပ် မဖတ်နိုင်အောင် ရှေ့မှာ PHX-VPN-ONLY ထည့်လိုက်တယ် 🔥
-    const finalConfig = 'PHX-VPN-ONLY\n' + configStr;
-
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ config: finalConfig, filename: `${randomIP}.conf` }),
+      body: JSON.stringify({ config: configStr, filename: `${randomIP}.conf` }),
     };
 
   } catch (err) {
