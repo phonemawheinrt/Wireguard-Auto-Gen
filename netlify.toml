@@ -1,0 +1,17 @@
+[build]
+  functions = "netlify/functions"
+  publish = "."
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*.conf"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    X-Content-Type-Options = "nosniff"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
